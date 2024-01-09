@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/treemap-diagram-fcc/static/css/main.b641e423.css",
+    "main.js": "/treemap-diagram-fcc/static/js/main.e0ff1e35.js",
+    "static/js/787.5dd09d0d.chunk.js": "/treemap-diagram-fcc/static/js/787.5dd09d0d.chunk.js",
+    "static/media/logo.svg": "/treemap-diagram-fcc/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/treemap-diagram-fcc/index.html",
+    "main.b641e423.css.map": "/treemap-diagram-fcc/static/css/main.b641e423.css.map",
+    "main.e0ff1e35.js.map": "/treemap-diagram-fcc/static/js/main.e0ff1e35.js.map",
+    "787.5dd09d0d.chunk.js.map": "/treemap-diagram-fcc/static/js/787.5dd09d0d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b641e423.css",
+    "static/js/main.e0ff1e35.js"
+  ]
+}
