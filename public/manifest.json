@@ -6,8 +6,7 @@
       "src": "treemap.png",
       "sizes": "1918x1140",
       "type": "image/png"
-    },
-
+    }
   ],
   "start_url": ".",
   "display": "standalone",

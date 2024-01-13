@@ -2,11 +2,6 @@
   text-align: center;
 }
 
-#container {
-  height: 1000px;
-  width: 800px;
-}
-
 #tooltip {
   visibility: hidden;
 }
