@@ -29,6 +29,7 @@ function App() {
     console.log("treeData", treedata);
 
     const container = d3.select("#container");
+    const tooltip = d3.select("#tooltip");
 
     let hierarchy = d3
       .hierarchy(treedata, (node) => {
@@ -55,6 +56,7 @@ function App() {
       .attr("transform", (kickstarter)=> {
         return `translate(${kickstarter.x0}, ${kickstarter.y0})`
       });
+
     tileGroup
       .append("rect")
       .attr("class", "tile")
@@ -107,7 +109,16 @@ function App() {
       .attr('height', (kickstarter)=> kickstarter.y1 - kickstarter.y0)
       .attr('stroke-width', 1)
       .attr('stroke', "white")
-
+      .on("mouseover", (event, kickstarter)=> {
+          tooltip.transition()
+            .style("visibility", "visible")
+            .text(()=> {return `Name: ${kickstarter.data.name}, Category: ${kickstarter.data.category}, Value: ${kickstarter.data.value}`})
+            .attr('data-value', kickstarter.data.value)       
+      })
+      .on("mouseout", (event, kickstarter)=> {
+          tooltip.transition()
+            .style("visibility", "hidden")
+      })
     console.log(tilesArray);
 
     // tileGroup
@@ -118,15 +129,14 @@ function App() {
     //   .attr('y', 20);
 
       tileGroup.append("text")
-    .attr('class', 'tile-text')
-    .selectAll("tspan")
-    .data(function(d) { return d.data.name.split(/(?=[A-Z][^A-Z])/g); })
-    .enter().append("tspan")
-    .attr("x", 5)
-    .attr("y", function(d, i) { return 13 + i * 10; })
-    .style("font-size", "10px")
-    .text(function(d) { return d; });
-
+        .attr('class', 'tile-text')
+        .selectAll("tspan")
+        .data(function(d) { return d.data.name.split(/(?=[A-Z][^A-Z])/g); })
+        .enter().append("tspan")
+        .attr("x", 5)
+        .attr("y", function(d, i) { return 13 + i * 10; })
+        .style("font-size", "10px")
+        .text(function(d) { return d; });
 
   }
   return (
@@ -136,7 +146,7 @@ function App() {
         Top 100 Most Pledged Kickstarter Campaigns Grouped By Category
       </p>
       <svg id="container" width={1000} height={600}></svg>
-      {/* <div id="legend"></div> */}
+      <div id="tooltip"></div>
       <svg id="legend" width="500">
         <g transform="translate(60,10)">
           <g transform="translate(0,0)">
@@ -350,8 +360,6 @@ function App() {
           </g>
         </g>
       </svg>
-    
-      <div id="tooltip"></div>
     </div>
   );
 }
