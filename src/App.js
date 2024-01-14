@@ -110,9 +110,12 @@ function App() {
       .attr('stroke-width', 1)
       .attr('stroke', "white")
       .on("mouseover", (event, kickstarter)=> {
+        const formattedValue = kickstarter.data.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        tooltip.transition()
+
           tooltip.transition()
             .style("visibility", "visible")
-            .text(()=> {return `Name: ${kickstarter.data.name}, Category: ${kickstarter.data.category}, Value: ${kickstarter.data.value}`})
+            .text(()=> {return `Name: ${kickstarter.data.name}, Category: ${kickstarter.data.category}, Value: ${formattedValue}`})
             .attr('data-value', kickstarter.data.value)       
       })
       .on("mouseout", (event, kickstarter)=> {
